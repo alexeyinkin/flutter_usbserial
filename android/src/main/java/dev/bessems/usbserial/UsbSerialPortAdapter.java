@@ -136,6 +136,25 @@ public class UsbSerialPortAdapter implements MethodCallHandler, EventChannel.Str
                 break;
             }
 
+            case "rawControlTransfer": {
+                int requestType = call.argument("requestType");
+                int request = call.argument("request");
+                int value = call.argument("value");
+                int index = call.argument("index");
+                byte[] data = call.argument("data");
+                int timeout = call.argument("timeout");
+                int response = -1;
+                if (m_Connection != null) {
+                    int dataLength = 0;
+                    if (data != null) {
+                        dataLength = data.length;
+                    }
+                    response = m_Connection.controlTransfer(requestType, request, value, index, data, dataLength, timeout);
+                }
+                result.success(response);
+                break;
+            }
+
             default:
                 result.notImplemented();
         }

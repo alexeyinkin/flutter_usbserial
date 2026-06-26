@@ -1,3 +1,8 @@
+# This clone fixes the following issue:
+https://github.com/altera2015/usbserial/issues/133
+
+The original README follows:
+
 # Looking for maintainer
 
 I'm looking for a new maintainer for this project, please indicate your interest here: https://github.com/altera2015/usbserial/issues/121
