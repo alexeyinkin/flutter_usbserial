@@ -173,6 +173,18 @@ class UsbPort extends AsyncDataSinkSource {
     return await _channel.invokeMethod("write", {"data": data});
   }
 
+  /// Sends a raw control transfer.
+  Future<int?> rawControlTransfer(int requestType, int request, int value, int index, Uint8List? data, int timeout) async {
+    return await _channel.invokeMethod("rawControlTransfer", {
+      "requestType": requestType,
+      "request": request,
+      "value": value,
+      "index": index,
+      "data": data,
+      "timeout": timeout
+    });
+  }
+
   /// Sets the port parameters to the requested values.
   ///
   /// ```dart
